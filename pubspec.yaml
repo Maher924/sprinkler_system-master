@@ -1,0 +1,61 @@
+name: sprinkler_system
+description: A new Flutter project.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^1.0.0
+  flutter_native_splash: ^2.1.6
+  flutter_launcher_icons: ^0.9.2
+  import_sorter: ^4.6.0
+  rename: ^2.0.1
+  geolocator: ^8.2.1
+  http: ^0.13.4
+  flutter_spinkit: ^5.1.0
+  intl: ^0.17.0
+  cupertino_icons: ^1.0.2
+
+# Import Sorter
+# To organize the imports using import_sorter package, run the following command: flutter pub run import_sorter:main
+
+# Rename
+# To rename the app, run the following command with the wanted name: flutter pub global run rename --appname "app_name"
+# To change the package name, run the following command with the wanted package name: flutter pub global run rename --bundleId "package_name"
+# TODO: Take care of the app name localization
+
+# Flutter Launcher Icons
+# To create the icons, run the following command: flutter pub run flutter_launcher_icons:main
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/icon/icon.png"
+  remove_alpha_ios: true
+  adaptive_icon_background: "#dcded9"
+  adaptive_icon_foreground: "assets/images/icon/adaptive_icon_foreground.png"
+
+# Flutter Native Splash
+# To create the splash, run the following command: flutter pub run flutter_native_splash:create
+flutter_native_splash:
+  color: "#dcded9"
+  android: true
+  ios: true
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
