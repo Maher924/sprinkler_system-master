@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "744766300641",
+    "project_id": "smart-irrigation-system-2022",
+    "storage_bucket": "smart-irrigation-system-2022.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744766300641:android:9feaed14e3cfb7baadf2a0",
+        "android_client_info": {
+          "package_name": "com.o6u.sprinkler_system"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "744766300641-jf0nrmvriprcs35lm80vf3a55b953s35.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8LE5xqkQR3TisiH9Y1YGd4uT1woSFrLU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "744766300641-jf0nrmvriprcs35lm80vf3a55b953s35.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

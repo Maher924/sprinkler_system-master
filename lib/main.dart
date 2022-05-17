@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:sprinkler_system/screens/create_user_screen/create_user_screen.dart';
 import 'package:sprinkler_system/screens/home_screen/home_screen.dart';
@@ -11,7 +12,13 @@ import 'package:sprinkler_system/screens/users_screen/users_screen.dart';
 
 import 'utils/colors_palette.dart';
 
-void main() => runApp( MyApp());
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp();
+
+  runApp( MyApp());
+}
 
 class MyApp extends StatefulWidget {
    MyApp({Key? key}) : super(key: key);

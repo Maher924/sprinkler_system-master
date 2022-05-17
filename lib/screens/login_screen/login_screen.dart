@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sprinkler_system/screens/loading_location_screen/loading.dart';
 import 'package:sprinkler_system/screens/main_screen/main_screen.dart';
 import 'package:sprinkler_system/screens/users_screen/users_screen.dart';
@@ -9,6 +11,8 @@ import 'package:sprinkler_system/widgets/text_input.dart';
 
 import '../../utils/util_values.dart';
 import '../../widgets/primary_button.dart';
+import '../../widgets/showToast.dart';
+import '../home_screen/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String routeName = '/login';
@@ -121,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void _login(BuildContext context) {
+  void _login(BuildContext context) async{
     final formState = _formKey.currentState;
     setState(() => _errorText = null);
 
@@ -129,14 +133,59 @@ class _LoginScreenState extends State<LoginScreen> {
       if (formState.validate()) {
         formState.save();
 
-        if (_email == 'admin@test.com' && _password == '123456') {
+        if (_email == 'admin@app.com' && _password == '123456789') {
           Navigator.of(context).pushReplacementNamed(UsersScreen.routeName);
-        } else if (_email == 'test@test.com' && _password == '123456') {
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context)=>Loading()));
-        } else {
+        }
+        User? user = await signInUsingEmailPassword(
+          email: _email,
+          password: _password, context: context,
+        );
+
+        if(user?.uid!=null)
+          {
+            Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+          }
+        else{
           setState(() => _errorText = 'Email or Password is incorrect');
         }
+
+        // else if (_email == 'test@test.com' && _password == '123456') {
+        //   Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context)=>Loading()));
+        // } else {
+        //   setState(() => _errorText = 'Email or Password is incorrect');
+        // }
       }
     }
+  }
+
+  static Future<User?> signInUsingEmailPassword({
+    required String email,
+    required String password,
+    required BuildContext context,
+  }) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user;
+
+    try {
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      user = userCredential.user;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        ShowToast('Email is not found', ToastGravity.BOTTOM);
+
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+
+        ShowToast('incorrect password', ToastGravity.BOTTOM);
+
+        print('Wrong password provided.');
+      }
+    }
+
+    return user;
   }
 }
