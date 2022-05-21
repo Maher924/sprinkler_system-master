@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sprinkler_system/utils/assets_manager.dart';
 import 'package:sprinkler_system/utils/sprinklers_id.dart';
+import 'package:sprinkler_system/utils/user_id.dart';
 
 import '../../../utils/colors_palette.dart';
 import '../../../utils/gaps.dart';
@@ -26,7 +27,7 @@ class  SprinklerItem extends StatelessWidget {
     ),
     Gaps.gap12,
     Text(
-    '${SprinklerId.id[i]}',
+    '${UserID.sprinklerData['$i']}',
     style: const TextStyle(
     color: ColorsPalette.primaryColor,
     fontSize: 16,
@@ -37,7 +38,7 @@ class  SprinklerItem extends StatelessWidget {
     Transform.scale(
     scale: 0.75,
     child: CupertinoSwitch(
-    value: SprinklerId.active[i],
+    value: UserID.sprinklerStatus['$i'],
 onChanged: CallBack,
 activeColor: ColorsPalette.primaryColor,
 trackColor: Colors.red,

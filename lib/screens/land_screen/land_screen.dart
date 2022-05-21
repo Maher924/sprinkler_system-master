@@ -5,6 +5,7 @@ import 'package:sprinkler_system/widgets/custom_card.dart';
 
 import '../../utils/colors_palette.dart';
 import '../../utils/sprinklers_id.dart';
+import '../../utils/user_id.dart';
 import '../../utils/util_values.dart';
 import '../../widgets/custom_app_bar.dart';
 import '../../widgets/garden_card.dart';
@@ -36,15 +37,16 @@ class _LandScreenState extends State<LandScreen> {
               Transform.scale(
                 scale: 0.75,
                 child: CupertinoSwitch(
-                  value: SprinklerId.auto,
+                  value: UserID.sprinklerStatus['auto'],
                   trackColor: Colors.red,
                   onChanged: (value) {
                     setState((){
-                      if (SprinklerId.auto == false){
+                      if (UserID.sprinklerStatus['auto'] == false){
                         for(int i=0;i<6;i++)
-                          SprinklerId.active[i]=true;
+                          UserID.sprinklerStatus['$i']=true;
                       }
-                      SprinklerId.auto = value;
+                      UserID.sprinklerStatus['auto']=value;
+                      UserID.push_sprinkler_data();
                       value =!value;
                     });
                   },
@@ -85,14 +87,14 @@ class _LandScreenState extends State<LandScreen> {
                       children:  [
                         for (int i = 0; i < 6; i++) SprinklerItem(i:i,CallBack: (value) {print(value);
                         setState((){
-                          SprinklerId.active[i]=value;
+                          UserID.sprinklerStatus['$i']=value;
                           value =!value;
-
+                          UserID.push_sprinkler_data();
                         });
                         },),
                       ],
                     ),
-                    if (SprinklerId.auto) Stack(children:[Container(color:Color(0xa0d6d6d6) ,width: 400,height: 230,)] ) ,
+                    if (UserID.sprinklerStatus['auto']) Stack(children:[Container(color:Color(0xa0d6d6d6) ,width: 400,height: 230,)] ) ,
                   ],
                 ),
               ),

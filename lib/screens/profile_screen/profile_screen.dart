@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sprinkler_system/utils/assets_manager.dart';
 import 'package:sprinkler_system/utils/gaps.dart';
+import 'package:sprinkler_system/utils/user_id.dart';
 
 import '../../utils/colors_palette.dart';
 import '../../utils/util_values.dart';
@@ -93,7 +94,7 @@ class ProfileScreen extends StatelessWidget {
                     const SizedBox.square(dimension: 45),
                     Gaps.gap24,
                     Text(
-                      'Mohamed Refaie',
+                      '${UserID.userdata['firstName']} ${UserID.userdata['lastName']}',
                       style: TextStyle(
                         color: ColorsPalette.primarySwatch.shade900,
                         fontSize: 24,
@@ -102,7 +103,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     Gaps.gap4,
                     Text(
-                      'ID: 201900823',
+                      'ID: ${UserID.userdata['id']}',
                       style: TextStyle(
                         color: ColorsPalette.primarySwatch.shade300,
                         fontSize: 18,
@@ -117,28 +118,28 @@ class ProfileScreen extends StatelessWidget {
                         children: [
                           const TextSpan(text: 'Land Shape: '),
                           TextSpan(
-                            text: 'Rectangle\n',
+                            text: '${UserID.userdata['landShape']}\n',
                             style: TextStyle(
                               color: ColorsPalette.primarySwatch.shade300,
                             ),
                           ),
                           const TextSpan(text: 'Land Area: '),
                           TextSpan(
-                            text: '250\n',
+                            text: '${UserID.userdata['landArea']}\n',
                             style: TextStyle(
                               color: ColorsPalette.primarySwatch.shade300,
                             ),
                           ),
                           const TextSpan(text: 'Land ID: '),
                           TextSpan(
-                            text: '12345\n',
+                            text: '${UserID.userdata['landID']}\n',
                             style: TextStyle(
                               color: ColorsPalette.primarySwatch.shade300,
                             ),
                           ),
                           const TextSpan(text: 'Sprinklers '),
                           TextSpan(
-                            text: '10',
+                            text: '${UserID.userdata['sprinklers']}',
                             style: TextStyle(
                               color: ColorsPalette.primarySwatch.shade300,
                             ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sprinkler_system/screens/create_user_screen/create_user_screen.dart';
 import 'package:sprinkler_system/screens/home_screen/home_screen.dart';
 import 'package:sprinkler_system/screens/land_screen/land_screen.dart';
+import 'package:sprinkler_system/screens/loading_location_screen/loading.dart';
 import 'package:sprinkler_system/screens/login_screen/login_screen.dart';
 import 'package:sprinkler_system/screens/main_screen/main_screen.dart';
 import 'package:sprinkler_system/screens/profile_screen/profile_screen.dart';
@@ -48,6 +49,7 @@ class _MyAppState extends State<MyApp> {
         ReportScreen.routeName: (_) =>  ReportScreen(),
         UsersScreen.routeName: (_) =>  UsersScreen(),
         CreateUserScreen.routeName: (_) =>  CreateUserScreen(),
+        'Loading': (context)=>Loading(),
       },
     );
   }

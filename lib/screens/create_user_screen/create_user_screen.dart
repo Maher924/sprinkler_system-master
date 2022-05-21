@@ -11,22 +11,22 @@ import '../../widgets/custom_app_bar.dart';
 import '../../widgets/primary_button.dart';
 
 class CreateUserScreen extends StatelessWidget {
-  static const String routeName = '/create-user';
+  static  String routeName = '/create-user';
 
-  const CreateUserScreen({Key? key}) : super(key: key);
+   CreateUserScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar:  CustomAppBar(),
       body: Center(
         child: SingleChildScrollView(
           physics: UtilValues.scrollPhysics,
           child: Padding(
-            padding: const EdgeInsets.all(24),
+            padding:  EdgeInsets.all(24),
             child: Column(
               children: [
-                const Text(
+                 Text(
                   'Create Account',
                   style: TextStyle(
                     color: ColorsPalette.primarySwatch,
@@ -37,39 +37,54 @@ class CreateUserScreen extends StatelessWidget {
                 Gaps.gap32,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children:  [
                     GenderOptionCard(gender: Gender.male),
                     Gaps.gap16,
                     GenderOptionCard(gender: Gender.female),
                   ],
                 ),
                 Gaps.gap32,
-                const TextInput(
+                 TextInput(
                   hint: 'First Name',
                   inputType: TextInputType.name,
+                  onSaved: (value){
+
+                  },
                 ),
                 Gaps.gap16,
-                const TextInput(
+                 TextInput(
                   hint: 'Last Name',
                   inputType: TextInputType.name,
                 ),
                 Gaps.gap16,
-                const TextInput(
+                 TextInput(
                   hint: 'Email',
                   inputType: TextInputType.emailAddress,
-                ),
+                  validator: (String? email) {
+                    if (email == null || email.isEmpty) {
+                      return 'Email is required';
+                    }
+                    if (!RegExp(
+                        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+                        .hasMatch(email)) {
+                      return 'Email is invalid';
+                    }
+                    return null;
+                  },
+
+                 ),
                 Gaps.gap16,
-                const TextInput(
+                 TextInput(
                   hint: 'Phone Number',
                   inputType: TextInputType.phone,
                 ),
                 Gaps.gap16,
-                const TextInput(
+                 TextInput(
                   hint: 'Password',
                   inputType: TextInputType.visiblePassword,
                 ),
                 Gaps.gap16,
-                const TextInput(
+                 TextInput(
                   hint: 'Confirm Password',
                   inputType: TextInputType.visiblePassword,
                 ),

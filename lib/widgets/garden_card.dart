@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:sprinkler_system/utils/colors_palette.dart';
 import 'package:sprinkler_system/utils/sprinklers_id.dart';
 
+import '../utils/user_id.dart';
 import 'custom_card.dart';
 import 'garden_card/local_widgets/garden_sprinkle.dart';
 
@@ -40,30 +41,30 @@ class _GardenCardState extends State<GardenCard> {
             GardenSprinkle(
               x: 30,
               y: 70,
-              isActive: SprinklerId.active[0],
+              isActive: UserID.sprinklerStatus['0'],
             ),
             GardenSprinkle(
               x: 80,
               y: 20,
-              isActive: SprinklerId.active[1],
+              isActive: UserID.sprinklerStatus['1'],
             ),
             GardenSprinkle(
               x: 200,
               y: 130,
-              isActive: SprinklerId.active[2],
+              isActive: UserID.sprinklerStatus['2'],
             ),
             GardenSprinkle(
-              isActive: SprinklerId.active[3],
+              isActive: UserID.sprinklerStatus['3'],
               x: 60,
               y: 130,
             ),
             GardenSprinkle(
-              isActive: SprinklerId.active[4],
+              isActive: UserID.sprinklerStatus['4'],
               x: 250,
               y: 40,
             ),
             GardenSprinkle(
-              isActive: SprinklerId.active[5],
+              isActive: UserID.sprinklerStatus['5'],
               x: 140,
               y: 80,
             ),

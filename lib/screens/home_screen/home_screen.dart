@@ -3,6 +3,7 @@ import 'package:sprinkler_system/screens/land_screen/land_screen.dart';
 import 'package:sprinkler_system/screens/loading_location_screen/loading.dart';
 import 'package:sprinkler_system/utils/gaps.dart';
 import 'package:sprinkler_system/utils/sprinklers_id.dart';
+import 'package:sprinkler_system/utils/user_id.dart';
 
 import '../../utils/colors_palette.dart';
 import '../../utils/util_values.dart';
@@ -62,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Gaps.gap24,
                     Text(
-                      'Number of sprinklers: 6\nActive: ${SprinklerId.calc_active()} \nInactive: ${SprinklerId.calc_deactive()}',
+                      'Number of sprinklers: 6\nActive: ${UserID.calc_active()} \nInactive: ${UserID.calc_deactive()}',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: ColorsPalette.primaryColor,

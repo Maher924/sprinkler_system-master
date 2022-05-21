@@ -7,8 +7,10 @@ import 'package:sprinkler_system/screens/users_screen/users_screen.dart';
 import 'package:sprinkler_system/utils/assets_manager.dart';
 import 'package:sprinkler_system/utils/colors_palette.dart';
 import 'package:sprinkler_system/utils/gaps.dart';
+import 'package:sprinkler_system/utils/user_id.dart';
 import 'package:sprinkler_system/widgets/text_input.dart';
 
+import '../../utils/sprinklers_id.dart';
 import '../../utils/util_values.dart';
 import '../../widgets/primary_button.dart';
 import '../../widgets/showToast.dart';
@@ -143,7 +145,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
         if(user?.uid!=null)
           {
-            Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+            UserID.userID = user;
+            UserID.get_user_data();
+            UserID.get_sprinkler_data();
+
+
+
+            Navigator.of(context).pushReplacementNamed('Loading');
           }
         else{
           setState(() => _errorText = 'Email or Password is incorrect');

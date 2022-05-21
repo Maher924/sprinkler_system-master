@@ -1,6 +1,8 @@
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import '../../utils/user_id.dart';
 class Location {
   var lat;
   var long;
@@ -15,6 +17,7 @@ class Location {
     long = position.longitude;
     print(lat);
     print(long);
+
     }
         catch(e){
       print(e);
