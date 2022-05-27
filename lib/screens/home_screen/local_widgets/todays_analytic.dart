@@ -49,7 +49,7 @@ class _TodaysAnalyticState extends State<TodaysAnalytic> {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children:  [
+                children: [
                   Text(
                     '${WeatherData.temp}',
                     style: TextStyle(
@@ -68,45 +68,45 @@ class _TodaysAnalyticState extends State<TodaysAnalytic> {
                   )
                 ],
               ),
-              const Spacer(),
               Gaps.gap16,
-              Text.rich(
-                TextSpan(
-                  children:  [
-                    TextSpan(text: 'Precip: '),
-                    TextSpan(
-                      text: '0%\n',
-                      style: TextStyle(
-                        color: ColorsPalette.primarySwatch,
+              Expanded(
+                child: Text.rich(
+                  TextSpan(
+                    children: [
+                      TextSpan(text: 'Precip: '),
+                      TextSpan(
+                        text: '0%\n',
+                        style: TextStyle(
+                          color: ColorsPalette.primarySwatch,
+                        ),
                       ),
-                    ),
-                    TextSpan(text: 'Humidity: '),
-                    TextSpan(
-                      text: '${WeatherData.humidety}%\n',
-                      style: TextStyle(
-                        color: ColorsPalette.primarySwatch,
+                      TextSpan(text: 'Humidity:'),
+                      TextSpan(
+                        text: '${WeatherData.humidety}%\n',
+                        style: TextStyle(
+                          color: ColorsPalette.primarySwatch,
+                        ),
                       ),
-                    ),
-                    TextSpan(text: 'Wind: '),
-                    TextSpan(
-                      text: '${WeatherData.wind} km/h',
-                      style: TextStyle(
-                        color: ColorsPalette.primarySwatch,
+                      TextSpan(text: 'Wind: '),
+                      TextSpan(
+                        text: '${WeatherData.wind} km/h',
+                        style: TextStyle(
+                          color: ColorsPalette.primarySwatch,
+                        ),
                       ),
+                    ],
+                    style: TextStyle(
+                      color: ColorsPalette.primarySwatch.shade300,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
                     ),
-                  ],
-                  style: TextStyle(
-                    color: ColorsPalette.primarySwatch.shade300,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
-              const Spacer(),
               Gaps.gap16,
               Image.asset(
                 AssetsManager.weather,
-                width: 80,
+                width: 70,
               ),
             ],
           ),

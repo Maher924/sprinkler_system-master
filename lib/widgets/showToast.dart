@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-
 void ShowToast(String message, ToastGravity toastGravity) {
-  toastGravity ??= ToastGravity.CENTER;
+  // toastGravity ??= ToastGravity.CENTER;
 
   Fluttertoast.showToast(
       msg: message,
