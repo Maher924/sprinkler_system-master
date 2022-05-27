@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sprinkler_system/screens/land_screen/land_screen.dart';
 import 'package:sprinkler_system/screens/loading_location_screen/loading.dart';
 import 'package:sprinkler_system/utils/gaps.dart';
@@ -38,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.all(24),
                 child: Column(
                   children: [
-                     TodaysAnalytic(),
+                    TodaysAnalytic(),
                     Gaps.gap24,
                     const CustomDivider(),
                     Gaps.gap24,
@@ -63,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Gaps.gap24,
                     Text(
-                      'Number of sprinklers: 6\nActive: ${UserID.calc_active()} \nInactive: ${UserID.calc_deactive()}',
+                      'Number of sprinklers: 6\nActive: ${context.read<UserID>().calc_active()} \nInactive: ${context.read<UserID>().calc_deactive()}',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: ColorsPalette.primaryColor,

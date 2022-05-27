@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sprinkler_system/utils/gaps.dart';
 import 'package:sprinkler_system/widgets/custom_card.dart';
 
@@ -22,6 +23,7 @@ class LandScreen extends StatefulWidget {
 class _LandScreenState extends State<LandScreen> {
   @override
   Widget build(BuildContext context) {
+    final sprinklerStatus = context.read<UserID>().sprinklerStatus;
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Front Garden',
@@ -37,21 +39,19 @@ class _LandScreenState extends State<LandScreen> {
               Transform.scale(
                 scale: 0.75,
                 child: CupertinoSwitch(
-                  value: UserID.sprinklerStatus['auto'],
+                  value: sprinklerStatus['auto'],
                   trackColor: Colors.red,
                   onChanged: (value) {
-                    setState((){
-                      if (UserID.sprinklerStatus['auto'] == false){
-                        for(int i=0;i<6;i++)
-                          UserID.sprinklerStatus['$i']=true;
+                    setState(() {
+                      if (sprinklerStatus['auto'] == false) {
+                        for (int i = 0; i < 6; i++) sprinklerStatus['$i'] = true;
                       }
-                      UserID.sprinklerStatus['auto']=value;
-                      UserID.push_sprinkler_data();
-                      value =!value;
+                      sprinklerStatus['auto'] = value;
+                      context.read<UserID>().push_sprinkler_data();
+                      value = !value;
                     });
                   },
                   activeColor: ColorsPalette.primaryColor,
-
                 ),
               ),
             ],
@@ -59,8 +59,7 @@ class _LandScreenState extends State<LandScreen> {
         ],
       ),
       body: SingleChildScrollView(
-                      physics: UtilValues.scrollPhysics,
-
+        physics: UtilValues.scrollPhysics,
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: Column(
@@ -81,20 +80,31 @@ class _LandScreenState extends State<LandScreen> {
               Gaps.gap24,
               CustomCard(
                 child: Stack(
-
                   children: [
                     Column(
-                      children:  [
-                        for (int i = 0; i < 6; i++) SprinklerItem(i:i,CallBack: (value) {print(value);
-                        setState((){
-                          UserID.sprinklerStatus['$i']=value;
-                          value =!value;
-                          UserID.push_sprinkler_data();
-                        });
-                        },),
+                      children: [
+                        for (int i = 0; i < 6; i++)
+                          SprinklerItem(
+                            i: i,
+                            CallBack: (value) {
+                              print(value);
+                              setState(() {
+                                sprinklerStatus['$i'] = value;
+                                value = !value;
+                                context.read<UserID>().push_sprinkler_data();
+                              });
+                            },
+                          ),
                       ],
                     ),
-                    if (UserID.sprinklerStatus['auto']) Stack(children:[Container(color:Color(0xa0d6d6d6) ,width: 400,height: 230,)] ) ,
+                    if (sprinklerStatus['auto'])
+                      Stack(children: [
+                        Container(
+                          color: Color(0xa0d6d6d6),
+                          width: 400,
+                          height: 230,
+                        )
+                      ]),
                   ],
                 ),
               ),

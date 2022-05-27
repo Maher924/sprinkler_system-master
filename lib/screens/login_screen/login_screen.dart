@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 import 'package:sprinkler_system/screens/loading_location_screen/loading.dart';
 import 'package:sprinkler_system/screens/main_screen/main_screen.dart';
 import 'package:sprinkler_system/screens/users_screen/users_screen.dart';
@@ -127,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void _login(BuildContext context) async{
+  void _login(BuildContext context) async {
     final formState = _formKey.currentState;
     setState(() => _errorText = null);
 
@@ -140,20 +141,17 @@ class _LoginScreenState extends State<LoginScreen> {
         }
         User? user = await signInUsingEmailPassword(
           email: _email,
-          password: _password, context: context,
+          password: _password,
+          context: context,
         );
 
-        if(user?.uid!=null)
-          {
-            UserID.userID = user;
-            UserID.get_user_data();
-            UserID.get_sprinkler_data();
+        if (user?.uid != null) {
+          UserID.userID = user;
+          UserID.get_user_data();
+          context.read<UserID>().get_sprinkler_data();
 
-
-
-            Navigator.of(context).pushReplacementNamed('Loading');
-          }
-        else{
+          Navigator.of(context).pushReplacementNamed('Loading');
+        } else {
           setState(() => _errorText = 'Email or Password is incorrect');
         }
 
@@ -187,7 +185,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
         print('No user found for that email.');
       } else if (e.code == 'wrong-password') {
-
         ShowToast('incorrect password', ToastGravity.BOTTOM);
 
         print('Wrong password provided.');
